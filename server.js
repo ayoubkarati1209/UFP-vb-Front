@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8060;
+const PORT = process.env.PORT || 8050;
 // // drop the table if it already exists
 // db.sequelize.sync({ force: true }).then(() => {
 //   console.log("Drop and re-sync db.");
