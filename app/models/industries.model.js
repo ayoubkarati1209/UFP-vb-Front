@@ -10,6 +10,10 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false
         },
+        sic_number: {
+            type: Sequelize.STRING,
+            allowNull: false
+        },
         id_overviews: {
             type: Sequelize.INTEGER,
             allowNull: true

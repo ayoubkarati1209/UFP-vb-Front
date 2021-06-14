@@ -32,7 +32,6 @@ exports.create = (req, res) => {
 
     // Create a News
     const news = {
-        type: req.body.type,
         date: req.body.date,
         title: req.body.title,
         description: req.body.description,
