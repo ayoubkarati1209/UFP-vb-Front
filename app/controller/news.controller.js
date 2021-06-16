@@ -3,6 +3,7 @@ const News = db.news;
 const Spacs = db.spacs;
 const uploads = db.uploads;
 const uploadFile = require("../middleware/upload");
+const uploadsModel = require("../models/uploads.model");
 const Op = db.Sequelize.Op;
 
 const getPagination = (page, size) => {
@@ -21,6 +22,36 @@ const getPagingData = (data, page, limit) => {
 };
 
 // Create and Save a new New
+exports.findAllPagination = (req, res) => {
+    const { page, size, title } = req.query;
+    var condition = title ? {
+        title: {
+            [Op.title]: `%${title}%`
+        }
+    } : null;
+
+    const { limit, offset } = getPagination(page, size);
+
+    News.findAndCountAll({
+            where: condition,
+            limit,
+            offset,
+            include: [{
+                model: db.spacs,
+                model: db.uploads
+            }]
+
+        })
+        .then(data => {
+            const response = getPagingData(data, page, limit);
+            res.send(response);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while retrieving spacs."
+            });
+        });
+};
 exports.create = (req, res) => {
     // Validate request
     if (!req.body.title) {
@@ -69,7 +100,8 @@ exports.findAll = (req, res) => {
             ['createdAt', 'DESC']
         ],
         include: [{
-                model: db.spacs
+                model: db.spacs,
+                model: db.uploads
             }
 
         ]

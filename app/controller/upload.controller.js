@@ -85,9 +85,22 @@ const download = (req, res) => {
         }
     });
 };
+const findOne = (req, res) => {
+    const news_id = req.params.news_id;
 
+    Uploads.findOne({ where: { news_id: news_id } })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Error retrieving Spac with idnews=" + idspac
+            });
+        });
+};
 module.exports = {
     upload,
     getListFiles,
     download,
+    findOne
 };

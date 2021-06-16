@@ -10,6 +10,7 @@ module.exports = app => {
 
     // Retrieve all News
     router.get("/", news.findAll);
+    router.get("/pagination", news.findAllPagination);
     router.get("/:idnews", news.findOne);
     router.put("/:idnews", news.update);
     router.delete("/:idnews", news.delete);

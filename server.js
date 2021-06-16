@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 global.__basedir = __dirname;
+var path = require('path');
 
 const app = express();
 const db = require("./app/models");
@@ -38,8 +39,10 @@ require("./app/routes/filings.routes")(app);
 require("./app/routes/upload.routes")(app);
 require("./app/routes/user.routes")(app);
 // simple route
-app.get("/", (req, res) => {
-    res.json({ message: "Welcome to UFP application." });
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get("/:name", (req, res) => {
+    res.sendFile(path.join(__dirname, "./app/resources/uploads" + '/' + req.params.name));
 });
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
