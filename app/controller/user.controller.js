@@ -43,3 +43,26 @@ exports.findOne = (req, res) => {
             });
         });
 };
+exports.update = (req, res) => {
+    const iduser = req.params.iduser;
+
+    Users.update(req.body, {
+            where: { id: iduser }
+        })
+        .then(num => {
+            if (num == 1) {
+                res.send({
+                    message: "News was updated successfully."
+                });
+            } else {
+                res.send({
+                    message: `Cannot update Tutorial with idnews=${iduser}. Maybe News was not found or req.body is empty!`
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Error updating News with idnews=" + iduser + err
+            });
+        });
+};

@@ -13,10 +13,6 @@ module.exports = (sequelize, Sequelize) => {
         sic_number: {
             type: Sequelize.STRING,
             allowNull: false
-        },
-        id_overviews: {
-            type: Sequelize.INTEGER,
-            allowNull: true
         }
     });
 

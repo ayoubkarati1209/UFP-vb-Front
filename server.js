@@ -38,6 +38,7 @@ require("./app/routes/overviews-section")(app);
 require("./app/routes/filings.routes")(app);
 require("./app/routes/upload.routes")(app);
 require("./app/routes/user.routes")(app);
+require("./app/routes/targets.routes")(app);
 // simple route
 app.use(express.static(path.join(__dirname, 'public')));
 

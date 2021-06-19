@@ -23,7 +23,12 @@ exports.findOne = (req, res) => {
 };
 exports.findAll = (req, res) => {
     const idspac = req.params.idspac;
-    filings.findAll({ where: { spac_id: idspac } })
+    filings.findAll({
+            where: { spac_id: idspac },
+            order: [
+                ['date', 'DESC']
+            ]
+        })
         .then(data => {
             res.send(data);
         })

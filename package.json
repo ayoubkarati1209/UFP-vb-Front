@@ -28,6 +28,7 @@
         "swagger-ui-express": "^4.1.6"
     },
     "dependencies": {
-        "express-fileupload": "^1.2.1"
+        "express-fileupload": "^1.2.1",
+        "mysql": "^2.18.1"
     }
 }

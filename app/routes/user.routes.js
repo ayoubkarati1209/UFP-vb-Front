@@ -8,5 +8,6 @@ module.exports = app => {
     // Create a new admin_details
     router.post("/", users.create);
     router.get("/:email", users.findOne);
+    router.put("/:iduser", users.update);
     app.use('/api/user', cors(), router);
 };

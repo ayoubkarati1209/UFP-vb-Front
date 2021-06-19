@@ -94,13 +94,13 @@ db.spacs.hasMany(db.directors, {
         name: 'spac_id'
     }
 });
-db.overviews.hasMany(db.industries, {
+db.industries.hasMany(db.overviews, {
     foreignKey: {
-        name: 'id_overviews'
+        name: 'id_industries'
     }
 });
-db.industries.belongsTo(db.overviews, {
-    foreignKey: 'id_overviews'
+db.overviews.belongsTo(db.industries, {
+    foreignKey: 'id_industries'
 });
 db.overviews.hasMany(db.targets, {
     foreignKey: {

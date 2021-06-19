@@ -4,9 +4,10 @@ const fs = require("fs");
 const { type } = require("os");
 const Uploads = db.uploads;
 const Op = db.Sequelize.Op;
-const baseUrl = "http://localhost:8060/files/";
+const baseUrl = "http://localhost:8050/files/";
 
 const upload = async(req, res) => {
+
     try {
         await uploadFile(req, res);
 
@@ -16,25 +17,26 @@ const upload = async(req, res) => {
         } else {
 
         }
-        const uploads = {
-            news_id: req.body.news_id,
-            file: req.file.originalname,
-            type: req.body.type
-        };
-        console.log(uploads)
+
+
         res.status(200).send({
             message: "Uploaded the file successfully: " + req.file.originalname,
 
         });
-        Uploads.create(uploads)
+        Uploads.create({
+                news_id: req.body.news_id,
+                file: req.file.originalname,
+                type: req.body.type
+            })
             .then(data => {
-                res.status(200).send(data);
+                res.status.send(data);
             })
             .catch(err => {
                 res.status(500).send({
                     message: err.message || "Some error occurred while creating the News."
                 });
             });
+        console.log(uploads)
     } catch (err) {
         console.log(err);
 

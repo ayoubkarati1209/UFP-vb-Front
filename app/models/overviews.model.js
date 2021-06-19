@@ -14,6 +14,10 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER,
             allowNull: false
         },
+        id_industries: {
+            type: Sequelize.INTEGER,
+            allowNull: false
+        },
         spac_id: {
             type: Sequelize.INTEGER,
             allowNull: false

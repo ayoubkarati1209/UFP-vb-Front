@@ -117,7 +117,12 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const idnews = req.params.idnews;
 
-    News.findByPk(idnews)
+    News.findOne({
+            where: { id: idnews },
+            include: [{
+                model: db.uploads,
+            }]
+        })
         .then(data => {
             res.send(data);
         })
