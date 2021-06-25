@@ -12,6 +12,8 @@ module.exports = app => {
     router.get("/", news.findAll);
     router.get("/pagination", news.findAllPagination);
     router.get("/:idnews", news.findOne);
+
+    router.get("/spac/:spac_id", news.finnewsidspac);
     router.put("/:idnews", news.update);
     router.delete("/:idnews", news.delete);
     app.use('/api/news', cors(), router);

@@ -147,10 +147,6 @@ exports.findOne = (req, res) => {
             ['name', 'ASC']
         ],
         include: [{
-                model: db.news
-
-            },
-            {
                 model: db.overviews,
                 include: [{
                     model: db.industries

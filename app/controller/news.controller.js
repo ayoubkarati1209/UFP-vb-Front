@@ -132,6 +132,24 @@ exports.findOne = (req, res) => {
             });
         });
 };
+exports.finnewsidspac = (req, res) => {
+    const idspac = req.params.spac_id;
+
+    News.findAll({
+            where: { spac_id: idspac },
+            include: [{
+                model: db.uploads,
+            }]
+        })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Error retrieving Spac with idnews=" + idspac
+            });
+        });
+};
 exports.update = (req, res) => {
     const idnews = req.params.idnews;
 
