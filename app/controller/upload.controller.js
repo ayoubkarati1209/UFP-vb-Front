@@ -14,12 +14,11 @@ const upload = async(req, res) => {
         if (req.file == undefined) {
 
             return res.status(400).send({ message: "Please upload a file!" });
-        } else {
 
         }
 
 
-        res.status(200).send({
+        res.status(200).status({
             message: "Uploaded the file successfully: " + req.file.originalname,
 
         });
@@ -29,14 +28,13 @@ const upload = async(req, res) => {
                 type: req.body.type
             })
             .then(data => {
-                res.status.send(data);
+                res.status(200).send(data);
             })
             .catch(err => {
                 res.status(500).send({
                     message: err.message || "Some error occurred while creating the News."
                 });
             });
-        console.log(uploads)
     } catch (err) {
         console.log(err);
 
