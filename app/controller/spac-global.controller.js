@@ -154,6 +154,8 @@ exports.findOne = (req, res) => {
             },
             {
                 model: db.admins
+            },{
+            model:db.auxs
             },
             {
                 model: db.directors
